@@ -1,0 +1,28 @@
+{
+  "name": "play-nano-watch",
+  "version": "1.0.0",
+  "description": "Semi web automation for playnano.online",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j923sneaks/play-nano-watch.git"
+  },
+  "keywords": [
+    "playnano"
+  ],
+  "author": "j923sneaks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j923sneaks/play-nano-watch/issues"
+  },
+  "homepage": "https://github.com/j923sneaks/play-nano-watch#readme",
+  "dependencies": {
+    "puppeteer": "^10.2.0",
+    "puppeteer-extra": "^3.1.18",
+    "puppeteer-extra-plugin-stealth": "^2.7.8"
+  }
+}
