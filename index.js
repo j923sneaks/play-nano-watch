@@ -70,16 +70,7 @@ let exitFlag = false;
             // Manual action from user
             console.log('ACTION REQUIRED - Waiting for you to solve captcha...');
 
-            await page.waitForFunction(`
-                document
-                    .querySelector("#watch-videos form iframe")
-                    .getAttribute("data-hcaptcha-response") !== ""
-            `, { timeout: 0 });
-
-            // click to submit and continue watching
-            console.log('continue watching...');
-
-            await page.$eval('button[value="keep"]', el => el.click());
+            // waitCaptchaAndSubmit(); // old code 
         } catch (err) {
             console.log(err);
             console.log('Error. Exiting the program');
@@ -88,7 +79,7 @@ let exitFlag = false;
         }
     } while (!exitFlag);
 
-    await browser.close();
+    // await browser.close(); // dont close in case mag error?
 })();
 
 /**
@@ -108,4 +99,21 @@ const watchVideos = async () => {
 
         currentRound += 1;
     }
+}
+
+/**
+ * Old code for waiting captcha to be solved then auto click submit button
+ * Reason for removal: sometimes a different captcha appears so the query throws error
+ */
+const waitCaptchaAndSubmit = async () => {
+    await page.waitForFunction(`
+        document
+            .querySelector("#watch-videos form iframe")
+            .getAttribute("data-hcaptcha-response") !== ""
+    `, { timeout: 0 });
+
+    // click to submit and continue watching
+    console.log('continue watching...');
+
+    await page.$eval('button[value="keep"]', el => el.click());
 }
